@@ -1,9 +1,9 @@
 .frame{
-    width: 350px;
-    height: 300px;
+    width: 250px;
+    height: 350px;
     border: 15px solid rgba(107, 92, 8, 0.82);
     border-radius: 15px 45px 75px 125px;
     margin-left:150px;
     margin-top: 50px;
-    background-color: #abd6bc;
+    background-color: #9bdfb4;
 }
