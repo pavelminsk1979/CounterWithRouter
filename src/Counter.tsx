@@ -6,24 +6,24 @@ import {NavLink} from "react-router-dom";
 type CounterType = {
     addedPlusOneHandler: () => void
     setZeroHandler: () => void
-    setingsHandler: () => void
     number: number
-    finishNumber: number
+    inputMax: number
 }
 
 export function Counter({
                             addedPlusOneHandler,
                             setZeroHandler,
-                            setingsHandler,
                             number,
-                            finishNumber,
+                            inputMax,
                         }: CounterType) {
-
+const setingsHandler = () => {
+  
+}
 
     return (
         <div className={st.frame}>
             <div className={
-                number==finishNumber?st.finishNumber:st.number}>{number}</div>
+                number==inputMax?st.finishNumber:st.number}>{number}</div>
             <div className={st.buttonGroup}>
                 <Button
                     name={'plus and again plus and again plus 1'}

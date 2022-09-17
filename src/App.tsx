@@ -1,48 +1,59 @@
 import React, {useState} from 'react';
 import {Counter} from "./Counter";
 import {Settings} from "./Settings";
-import {HashRouter, NavLink, Routes,Route} from "react-router-dom";
+import {HashRouter, Routes,Route} from "react-router-dom";
 
 
 function App() {
 
-    const starnNumber=0
-    const finishNumber=5
+    const[inputMax,SetInputMax]=useState(5)
+    const[inputMin,SetInputMin]=useState(0)
+    const[number,SetNumber]=useState(inputMin)
 
-    const[number,SetNumber]=useState(starnNumber)
 
     const addedPlusOneHandler = () => {
-if(number<finishNumber){
+if(number<inputMax){
     SetNumber(number+1)
 }
     }
 
     const setZeroHandler = () => {
-        SetNumber(starnNumber)
+        SetNumber(inputMin)
     }
 
-    const setingsHandler = () => {
 
+    const buttonEditNumberHandler = () => {
+        SetNumber(inputMin)
+    }
+
+    const SetInputMaxHandler = (valueMax:number) => {
+        SetInputMax(valueMax)
+    }
+
+    const SetInputMinHandler = (valueMin:number) => {
+        SetInputMin(valueMin)
     }
 
 
     return (
         <div>
             <HashRouter>
-                <NavLink to={'/counter'}><h2>counter</h2></NavLink>
-                {/*<NavLink to={'/setting'}><h2>setting</h2></NavLink>*/}
-
                 <Routes>
                     <Route path={'/counter'}
                            element={<Counter
-                               finishNumber={finishNumber}
+                               inputMax={inputMax}
                                number={number}
                                addedPlusOneHandler={addedPlusOneHandler}
                                setZeroHandler={setZeroHandler}
-                               setingsHandler={setingsHandler}
                            />}/>
                     <Route path={'/setting'}
-                           element={<Settings/>}/>
+                           element={<Settings
+                               inputMax={inputMax}
+                               SetInputMax={SetInputMaxHandler}
+                               inputMin={inputMin}
+                               SetInputMin={SetInputMinHandler}
+                               buttonEditNumberHandler={buttonEditNumberHandler}
+                           />}/>
                 </Routes>
             </HashRouter>
         </div>

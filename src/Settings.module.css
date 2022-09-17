@@ -7,3 +7,21 @@
     margin-top: 50px;
     background-color: #9bdfb4;
 }
+
+.buttonEditNumber{
+    margin-top: 130px;
+    width: 350px;
+    height: 80px;
+    border-radius: 35px 35px 35px 5px;
+    border: 4px solid rgb(219, 192, 8);
+    background-color: #254d4d;
+    color: #dd6b11;
+    font-size: 30px;
+    box-shadow : 0px 10px 30px
+}
+.buttonEditNumber:hover{
+    border: 4px solid rgb(247, 215, 2);
+    background-color: #346565;
+    color: #f16e06;
+}
+
