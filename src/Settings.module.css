@@ -9,7 +9,7 @@
 }
 
 .buttonEditNumber{
-    margin-top: 130px;
+    margin-top: 30px;
     width: 350px;
     height: 80px;
     border-radius: 35px 35px 35px 5px;
@@ -25,3 +25,30 @@
     color: #f16e06;
 }
 
+.blokValueAndInput{
+    margin-left:15px;
+    margin-top: 25px;
+    font-size: 30px;
+}
+
+.inputMin{
+    width: 60px;
+    height: 30px;
+    border-radius:10px;
+    background-color: #254d4d;
+    color: #d5eadd;
+    margin-left:10px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.inputMax{
+    width: 57px;
+    height: 30px;
+    border-radius:10px;
+    background-color: #254d4d;
+    color: #d5eadd;
+    margin-left:10px;
+    font-size: 40px;
+    font-weight: bold;
+}

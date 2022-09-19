@@ -7,24 +7,30 @@ import {NavLink} from "react-router-dom";
 type SettingsType = {
     buttonEditNumberHandler: () => void
     inputMax: number
-    SetInputMax: (valueMax:number) => void
+    SetInputMax: (valueMax: number) => void
     inputMin: number
-    SetInputMin: (valueMin:number) => void
+    SetInputMin: (valueMin: number) => void
 }
 
-export function Settings({buttonEditNumberHandler,inputMax,SetInputMax,inputMin,SetInputMin}: SettingsType) {
+export function Settings({buttonEditNumberHandler, inputMax, SetInputMax, inputMin, SetInputMin}: SettingsType) {
 
 
     return (
         <div className={st.frame}>
+            <div className={st.blokValueAndInput}>
+                MIN value
+                <Input
+                inputNumber={inputMin}
+                callback={SetInputMin}
+                className={st.inputMin}/>
+            </div>
+            <div className={st.blokValueAndInput}>
+                MAX value
             <Input
-            inputNumber={inputMin}
-            callback={SetInputMin}
-            />
-            <Input
-            inputNumber={inputMax}
-            callback={SetInputMax}
-            />
+                inputNumber={inputMax}
+                callback={SetInputMax}
+                className={st.inputMax}/>
+            </div>
             <NavLink to={'/counter'}>
                 <Button
                     name={'как напишешь цифру - так и жми СЮДА'}

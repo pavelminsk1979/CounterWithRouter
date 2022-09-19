@@ -1,23 +1,23 @@
 import React, {ChangeEvent} from 'react';
 
 
-
-
 type InputType = {
-    inputNumber:number
-    callback:(value:number)=>void
+    inputNumber: number
+    callback: (value: number) => void
+    className:string
 }
 
-export function Input ({inputNumber,callback}: InputType) {
+export function Input({inputNumber, callback,className}: InputType) {
 
-    const onChangeInputHandler = (event:ChangeEvent<HTMLInputElement>) => {
-      callback(+event.currentTarget.value)
+    const onChangeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
+        callback(Math.round(+event.currentTarget.value))
     }
 
     return (
         <input
-value={inputNumber}
-onChange={onChangeInputHandler}
+            className={className}
+            value={inputNumber}
+            onChange={onChangeInputHandler}
             type='number'/>
     )
 }
