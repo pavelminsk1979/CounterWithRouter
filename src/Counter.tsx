@@ -1,7 +1,7 @@
 import React from 'react';
 import st from './Counter.module.css';
 import {Button} from "./Button";
-import {NavLink} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 type CounterType = {
     addedPlusOneHandler: () => void
@@ -16,9 +16,13 @@ export function Counter({
                             number,
                             inputMax,
                         }: CounterType) {
+
+    const navigate = useNavigate()
+
 const setingsHandler = () => {
-  
+  navigate('/setting')
 }
+
 
     return (
         <div className={st.frame}>
@@ -32,11 +36,10 @@ const setingsHandler = () => {
                     name={'start over'}
                     callback={setZeroHandler}
                     className={st.start}/>
-                <NavLink to={'/setting'}> <Button
-                    name={'settings'}
+                <Button
+                    name='settings'
                     callback={setingsHandler}
-                    className={st.setting}/></NavLink>
-
+                    className={st.setting}/>
             </div>
         </div>
     )

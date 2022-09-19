@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Counter} from "./Counter";
 import {Settings} from "./Settings";
-import {HashRouter, Routes,Route} from "react-router-dom";
+import {HashRouter, Routes,Route, Navigate} from "react-router-dom";
 
 
 function App() {
@@ -39,6 +39,9 @@ if(number<inputMax){
         <div>
             <HashRouter>
                 <Routes>
+                    <Route path={'/'}
+                    element={<Navigate to={'/counter'}/>}/>
+
                     <Route path={'/counter'}
                            element={<Counter
                                inputMax={inputMax}

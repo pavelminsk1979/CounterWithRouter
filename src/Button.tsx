@@ -3,7 +3,7 @@ import React from 'react';
 
 type ButtonType = {
     name: string
-    callback: () => void
+    callback?: () => void
     className: string
 }
 
