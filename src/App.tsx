@@ -1,38 +1,53 @@
-import React, {useState} from 'react';
+import React, {useReducer, useState} from 'react';
 import {Counter} from "./Counter";
 import {Settings} from "./Settings";
 import {HashRouter, Routes,Route, Navigate} from "react-router-dom";
+import {ReduserInputMax, setMaxValue} from "./redusers/ReduserInputMax";
+import {ReduserInputMin, setMinValue} from "./redusers/ReduserInputMin";
+import {
+    ReduserStateNumber,
+    setStateNumber,
+    setStateNumberEdit,
+    setStateNumberStart
+} from "./redusers/ReduserStateNumber";
 
 
 function App() {
 
-    const[inputMax,SetInputMax]=useState(5)
-    const[inputMin,SetInputMin]=useState(0)
-    const[number,SetNumber]=useState(inputMin)
+    const[inputMax,dispatchInputMax]=useReducer(
+        ReduserInputMax,5)
+    const[inputMin,dispatchInputMin]=useReducer(
+        ReduserInputMin,0)
+    const[number,dispatchSetNumber]=useReducer(
+        ReduserStateNumber, inputMin)
 
 
     const addedPlusOneHandler = () => {
 if(number<inputMax){
-    SetNumber(number+1)
+    dispatchSetNumber(setStateNumber(number))
 }
     }
 
     const setZeroHandler = () => {
-        SetNumber(inputMin)
+        dispatchSetNumber(setStateNumberStart(inputMin))
     }
 
 
     const buttonEditNumberHandler = () => {
-        SetNumber(inputMin)
-    }
-
-    const SetInputMaxHandler = (valueMax:number) => {
-        SetInputMax(valueMax)
+        dispatchSetNumber(setStateNumberEdit(inputMin))
     }
 
     const SetInputMinHandler = (valueMin:number) => {
-        SetInputMin(valueMin)
+        if(valueMin>=0&&valueMin<inputMax){
+            dispatchInputMin(setMinValue(valueMin))}
     }
+
+    const SetInputMaxHandler = (valueMax:number) => {
+        if(valueMax>=1&&valueMax>inputMin){
+           dispatchInputMax(setMaxValue(valueMax))}
+    }
+
+
 
 
     return (
