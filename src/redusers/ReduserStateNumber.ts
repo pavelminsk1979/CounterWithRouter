@@ -1,9 +1,12 @@
+import {initialMinValue} from "./ReduserInputMin";
 
 type ReduserStateNumberType=setStateNumberType
 |setStateNumberStartType
 |setStateNumberEditType
 
-export const ReduserStateNumber = (state:number,action:ReduserStateNumberType) => {
+const initialNumberValue:number=initialMinValue
+
+export const ReduserStateNumber = (state:number=initialNumberValue,action:ReduserStateNumberType) => {
   switch (action.type){
       case 'NUMBER-PLUS-ONE':{
           return action.number+1

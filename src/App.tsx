@@ -1,50 +1,58 @@
-import React, {useReducer, useState} from 'react';
+import React from 'react';
 import {Counter} from "./Counter";
 import {Settings} from "./Settings";
 import {HashRouter, Routes,Route, Navigate} from "react-router-dom";
-import {ReduserInputMax, setMaxValue} from "./redusers/ReduserInputMax";
-import {ReduserInputMin, setMinValue} from "./redusers/ReduserInputMin";
+import { setMaxValue} from "./redusers/ReduserInputMax";
+import { setMinValue} from "./redusers/ReduserInputMin";
 import {
-    ReduserStateNumber,
     setStateNumber,
     setStateNumberEdit,
     setStateNumberStart
 } from "./redusers/ReduserStateNumber";
+import {useDispatch, useSelector} from "react-redux";
+import {ReduxStoreType} from "./redux/store";
 
 
 function App() {
 
-    const[inputMax,dispatchInputMax]=useReducer(
-        ReduserInputMax,5)
-    const[inputMin,dispatchInputMin]=useReducer(
-        ReduserInputMin,0)
-    const[number,dispatchSetNumber]=useReducer(
-        ReduserStateNumber, inputMin)
+    const dispatch=useDispatch()
+
+   const inputMin=useSelector<ReduxStoreType,number>(
+       state => state.inputMin
+   )
+
+    const inputMax=useSelector<ReduxStoreType,number>(
+       state => state.inputMax
+   )
+
+    const number=useSelector<ReduxStoreType,number>(
+       state => state.number
+   )
 
 
     const addedPlusOneHandler = () => {
 if(number<inputMax){
-    dispatchSetNumber(setStateNumber(number))
+    dispatch(setStateNumber(number))
 }
     }
 
     const setZeroHandler = () => {
-        dispatchSetNumber(setStateNumberStart(inputMin))
+        dispatch(setStateNumberStart(inputMin))
     }
 
 
     const buttonEditNumberHandler = () => {
-        dispatchSetNumber(setStateNumberEdit(inputMin))
+        dispatch(setStateNumberEdit(inputMin))
     }
 
     const SetInputMinHandler = (valueMin:number) => {
         if(valueMin>=0&&valueMin<inputMax){
-            dispatchInputMin(setMinValue(valueMin))}
+            dispatch(setMinValue(valueMin))}
     }
 
     const SetInputMaxHandler = (valueMax:number) => {
         if(valueMax>=1&&valueMax>inputMin){
-           dispatchInputMax(setMaxValue(valueMax))}
+            dispatch(setMaxValue(valueMax))}
     }
 
 

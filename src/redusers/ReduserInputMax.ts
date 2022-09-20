@@ -1,6 +1,8 @@
 
 type ReduserInputMaxType=setMaxValueType
-export const ReduserInputMax = (state:number,action:ReduserInputMaxType) => {
+
+const initialMaxValue:number=5
+export const ReduserInputMax = (state:number=initialMaxValue,action:ReduserInputMaxType) => {
   switch (action.type){
       case 'SET-MAXVALUE':{
           return action.valueMax

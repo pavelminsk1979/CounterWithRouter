@@ -1,6 +1,7 @@
 
 type ReduserInputMinType=setMinValueType
-export const ReduserInputMin = (state:number,action:ReduserInputMinType) => {
+export const initialMinValue:number=0
+export const ReduserInputMin = (state:number=initialMinValue,action:ReduserInputMinType) => {
   switch (action.type){
       case 'SET-MINVALUE':{
           return action.valueMin
